@@ -1,0 +1,3 @@
+[Diagram|nome;description;content;updated]
+[Revisions|content;changed]
+[Revisions]0..*-1[Diagram]
