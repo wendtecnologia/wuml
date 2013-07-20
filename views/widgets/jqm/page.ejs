@@ -1,0 +1,69 @@
+<% console.log(page) %>
+<%
+/* defaults */
+var defaults = {
+    page: {
+       id: 'NoID',
+       title: settings.title,
+       content: 'No Content',
+       footer: '<h4>&reg; ' + settings.company + ' | 2012</h4>'
+    }
+}
+/* pages */
+if (page){
+    if (!page.id){
+       page.id = defaults.page.id;
+    }
+    if (!page.title){
+       page.title = defaults.page.title;
+    }
+    if (!page.content) {
+       page.content = defaults.page.content;
+    }
+    if (!page.footer) {
+       page.footer = defaults.page.footer;
+    }
+} else {
+    var page = defaults.page;
+}
+
+defaults.widget = {
+    header: {
+        top: [],
+        bottom: []
+    },
+    content: {
+        top: [],
+        bottom: []
+    },
+    footer: {
+        top: [],
+        bottom: []
+    }
+};
+
+/* widget */
+if (widget){
+    if (widget.footer){
+        if (!widget.footer.top) {
+           widget.footer.top = '';
+        }
+        if (!widget.footer.bottom) {
+           widget.footer.bottom = '';
+        }
+    } else {}
+} else {
+    var widget = defaults.widget;
+}
+%>
+<div id="<%= page.id %>" data-role="page">
+    <div data-role="header">
+        <h1><%= page.title %></h1>
+    </div><!-- /header -->
+    <div data-role="content">
+        <%- page.content %>
+    </div><!-- /content -->
+    <div data-role="footer" data-position="fixed">
+        <%- widget.footer.top + page.footer %>
+    </div><!-- /footer -->
+</div><!-- /page-<%= page.id %> -->
